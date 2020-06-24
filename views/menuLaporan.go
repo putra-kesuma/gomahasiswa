@@ -3,6 +3,8 @@ package views
 import (
 	"fmt"
 	"os"
+
+	"github.com/putra-kesuma/gomahasiswa/models"
 )
 
 func MenuLaporan() {
@@ -18,15 +20,12 @@ func MenuLaporan() {
 	fmt.Scanln(&selectedMenuLaporan)
 	switch selectedMenuLaporan {
 	case "1":
-		// models.InsertProduct()
+		models.LaporanPerMatakuliah()
 		break
 	case "2":
-		// models.DeleteProduk()
+		models.AvgLaporan()
 		break
 	case "3":
-		// models.DetailProduk()
-		break
-	case "4":
 		os.Exit(0)
 	default:
 		MainMenu()

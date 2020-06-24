@@ -24,9 +24,12 @@ func main() {
 			views.MenuDosen()
 			break
 		case "4":
-			views.MenuLaporan()
+			views.MenuNilai()
 			break
 		case "5":
+			views.MenuLaporan()
+			break
+		case "6":
 			os.Exit(0)
 		default:
 			utils.ClearScreen()

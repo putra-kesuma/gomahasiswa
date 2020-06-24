@@ -25,8 +25,39 @@ func InsertMatakuliah() {
 	fmt.Print("Masukkan jumlah sks = ")
 	fmt.Scanln(&masukanSks)
 
-	_, err = db.Exec(`insert into m_matakuliah (nama_matakuliah,sks) 
-	value (?,?,?)`, &masukanMk, &masukanSks)
+	//tiga validasi ketika memasukkan data Matakuliah
+	if masukanMk == "" {
+		fmt.Println("Nama Matakuliah tidak boleh kosong")
+	} else if len(masukanMk) < 3 {
+		fmt.Println("panjang nama matakuliah tidak boleh kurang dari tiga")
+	} else if masukanSks == 0 {
+		fmt.Println("Sks tidak boleh kosong")
+	} else {
+		_, err = db.Exec(`insert into m_matakuliah (nama_matakuliah,sks) 
+	value (?,?)`, &masukanMk, &masukanSks)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println("success")
+	}
+}
+
+//function Update Matakuliah
+func UpdateMatakuliah() {
+	db, err := services.Connect() //call function connect
+	defer db.Close()
+	var masukanId int
+	var masukanMk string
+	var masukanSks int
+	DetailMatakuliah()
+	fmt.Print("Masukkan Id yang ingin di edit = ")
+	fmt.Scanln(&masukanId)
+	fmt.Print("Masukkan Nama Mata Kuliah = ")
+	fmt.Scanln(&masukanMk)
+	fmt.Print("Masukkan jumlah sks = ")
+	fmt.Scanln(&masukanSks)
+
+	_, err = db.Exec(`update m_matakuliah set nama_matakuliah = ?, sks = ? where id_matakuliah = ?;`, &masukanMk, &masukanSks, &masukanId)
 	if err != nil {
 		log.Fatal(err)
 	}

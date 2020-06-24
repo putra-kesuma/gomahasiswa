@@ -28,10 +28,10 @@ func MenuMahasiswa() {
 		models.DeleteMahasiswa()
 		break
 	case "3":
-		// models.DetailProduk()
+		models.UpdateMahasiswa()
 		break
 	case "4":
-		models.DetailMahasiswa()
+		models.ShowMahasiswa()
 		break
 	case "5":
 		os.Exit(0)

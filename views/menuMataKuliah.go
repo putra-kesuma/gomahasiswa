@@ -28,7 +28,7 @@ func MenuMataKuliah() {
 		models.DeleteMatakuliah()
 		break
 	case "3":
-		// models.DetailProduk()
+		models.UpdateMatakuliah()
 		break
 
 	case "4":
